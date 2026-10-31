@@ -5,29 +5,15 @@ on: [push, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: kivy/buildozer:latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-
-    - name: Install system dependencies
-      run: |
-        sudo apt update
-        sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf automake libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake libffi-dev libssl-dev libltdl-dev m4 aidl
-
-    - name: Install buildozer and compatible cython
-      run: |
-        pip install --user --upgrade buildozer virtualenv
-        pip install --user "Cython<3.0"
-
     - name: Build with Buildozer
       run: |
-        export PATH=$PATH:$HOME/.local/bin
-        echo "y" | buildozer -v android debug
+        yes | buildozer -v android debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
