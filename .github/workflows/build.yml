@@ -19,9 +19,10 @@ jobs:
         sudo apt update
         sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf automake libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo6 cmake libffi-dev libssl-dev libltdl-dev m4 aidl
 
-    - name: Install buildozer and cython
+    - name: Install buildozer and compatible cython
       run: |
-        pip install --user --upgrade buildozer cython virtualenv
+        pip install --user --upgrade buildozer virtualenv
+        pip install --user "Cython<3.0"
 
     - name: Build with Buildozer
       run: |
