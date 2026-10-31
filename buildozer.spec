@@ -5,7 +5,7 @@ package.domain = com.wakilas
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 0.1
-requirements = python3,kivy,plyer,requests,groq,pyjnius,android
+requirements = python3,kivy,plyer,requests,groq,pyjnius==1.4.0,android
 orientation = portrait
 fullscreen = 1
 android.permissions = INTERNET,RECORD_AUDIO,CALL_PHONE,READ_CONTACTS
