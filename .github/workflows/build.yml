@@ -25,7 +25,7 @@ jobs:
     - name: Build with Buildozer
       run: |
         export PATH=$PATH:$HOME/.local/bin
-        echo "y" | buildozer android debug
+        echo "y" | buildozer -v android debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
